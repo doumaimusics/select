@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+
+<head> 
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+
+<title>脚本之家 www.jb51.net js下拉框省略号</title> 
+
+</head> 
+
+<body> 
+
+    <select id="a"> 
+
+        <option>sjkljn'</option> 
+
+        <option>sjk ncls kljm sckl;][m xmckxmc  dkmnkd v</option> 
+
+        <option>style="width:100px;"</option> 
+
+        <option>dvnlknvl njlkxnk dvnjdb is nisd j</option> 
+
+    </select> 
+
+    <script type="text/javascript"> 
+
+        function cutOption(selectObj , length) { 
+
+            this.selectObj = selectObj; 
+
+            this.length = length; 
+
+        } 
+
+        cutOption.prototype.init = function() { 
+
+            this.options = this.selectObj.getElementsByTagName('option'); 
+
+            for(i=0 , j=this.options.length ; i<j ; i++ ) 
+
+            { 
+
+                text = this.options[i].firstChild.nodeValue; 
+
+                if(text.length<=this.length) 
+
+                { 
+
+                    return; 
+
+                } 
+
+                else { 
+
+                    this.options[i].innerHTML = text.substring(0,this.length) + '...'; 
+
+                } 
+
+            } 
+
+        } 
+
+        obj = document.getElementById('a'); 
+
+        //想要几个字就改第二个参数; 
+
+        var optionClass = new cutOption(obj , 5); 
+        optionClass.init(); 
+    </script> 
+</body> 
+</html> 
